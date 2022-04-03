@@ -41,7 +41,7 @@
             <div class="col-4">
                 <div class="balance status">
                 <h5>Balance</h5>
-                <h2>$1240</h2>
+                <h2>$ <span id="currentBalance">1240</span></h2>
                 </div>
             </div>
         </div>
@@ -88,24 +88,36 @@
             const depositAmount = document.getElementById("depositAmount").value;
             const depositNumber = parseFloat(depositAmount);
 
-            const currentDeposit = document.getElementById("currentDeposit").innerText;
-            const currentDepositNumber = parseFloat(currentDeposit);
-            const totalDeposit = depositNumber + currentDepositNumber;
 
-            document.getElementById("currentDeposit").innerText = totalDeposit;
-            document.getElementById("depositAmount").value = "";
+            // ei kaj gula function use kore kor jay
+            // const currentDeposit = document.getElementById("currentDeposit").innerText;
+            // const currentDepositNumber = parseFloat(currentDeposit);
+            // const totalDeposit = depositNumber + currentDepositNumber;
+            // document.getElementById("currentDeposit").innerText = totalDeposit;
 
-
+            // const currentBalance = document.getElementById("currentBalance").innerText;
+            // const currentBalanceNumber = parseFloat(currentBalance);
+            // const totalBalance = depositNumber + currentBalanceNumber;
+            // document.getElementById("currentBalance").innerText = totalBalance;
             
 
+            //function ke call kora
+            updateSpanText("currentDeposit",depositNumber);
+            updateSpanText("currentBalance",depositNumber);
+            document.getElementById("depositAmount").value = "";
         })
+
+        //uporer same kaj ta function use koreo kora jay 
+
+        function updateSpanText(id,depositNumber){
+
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const total = depositNumber + currentNumber;
+            document.getElementById(id).innerText = total;
+        }
         
-        // Withdraw button event handaler
-        const withdrawBtn = document.getElementById("btnWithdraw");
-            withdrawBtn.addEventListener("click",function(){
-                const withdrawAmount = document.getElementById("withdrawAmount").value;
-            const withdrawNumber = parseFloat(withdrawAmount);
-            })
+        
 
     </script>
 </body>
